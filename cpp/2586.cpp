@@ -18,6 +18,52 @@ template<class T>T bitcnt(T x){return __builtin_popcount(x);}
 template<class T>T bitpar(T x){return __builtin_parity(x);}
 template<class T>T bitclz(T x){return __builtin_clz(x);}
 template<class T>T bitctz(T x){return __builtin_ctz(x);}
+vector<pair<int,int>>ss[404040];
 int main(){
-    
+    int n,m;
+    cin>>n>>m;
+    vector<pair<int,int>>arr(n+m+1);
+    for(int i=0; i<n; i++){
+        cin>>arr[i].first;
+        arr[i].second=0;
+    }
+    for(int i=n; i<m+n; i++){
+        cin>>arr[i].first;
+        arr[i].second=1;
+    }
+    sort(arr.begin(),arr.begin()+n+m);
+    int pnow=n+m;
+    for(int i=0; i<n+m; i++){
+        if(!arr[i].second){
+            ss[pnow++].push_back(arr[i]);
+        }
+        else{
+            ss[--pnow].push_back(arr[i]);
+        }
+    }
+    int save=0;
+    int mm=0;
+    int ans=0;
+    for(int i=0; i<404040; i++){
+        save=0;
+
+        for(int j=1; j<ss[i].size(); j+=2){
+            save+=abs(ss[i][j].first-ss[i][j-1].first);
+        }
+        if(ss[i].size()&1){
+            mm=save;
+            for(int j=ss[i].size()-1; j>1; j-=2){
+                save+=abs(ss[i][j].first-ss[i][j-1].first)-
+                abs(ss[i][j-1].first-ss[i][j-2].first);
+                mm=min(mm,save);
+            }
+        }
+        else{
+            ans+=save;
+            continue;
+        }
+        ans+=mm;
+    }
+    cout<<ans;
+    return 0;
 }
