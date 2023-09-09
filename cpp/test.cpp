@@ -18,3 +18,6 @@ template<class T>T bitcnt(T x){return __builtin_popcount(x);}
 template<class T>T bitpar(T x){return __builtin_parity(x);}
 template<class T>T bitclz(T x){return __builtin_clz(x);}
 template<class T>T bitctz(T x){return __builtin_ctz(x);}
+int main(){
+    
+}
