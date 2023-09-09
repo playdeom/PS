@@ -1,6 +1,6 @@
 .vscode/
 cpp/build/
 testcases/
-cpp/test.cpp
-cpp/short.cpp
+test.cpp
+short.cpp
 python/main.py
