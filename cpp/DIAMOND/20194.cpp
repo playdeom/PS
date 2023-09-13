@@ -34,17 +34,21 @@ int main() {
 
     for(int i=0; i<n; i++){
         if(arr[i]-r>bef_safe){//안전범위 밖에 있다면
-            now_pos_length=2*(arr[i]-bef_safe-r);
-            if(bef_pos_length==-1){
-                bef_pos_length=now_pos_length;
-                bef_pos=safe+r;
-                bef_safe=bef_pos+r;
-            }
-            else{
-                if(2*(arr[i]-bef_pos)>now_pos_length+bef_pos_length){
-                    safe;
-                }
-            }
+            
+
+
+            
+            // now_pos_length=2*(arr[i]-bef_safe-r);
+            // if(bef_pos_length==-1){
+            //     bef_pos_length=now_pos_length;
+            //     bef_pos=safe+r;
+            //     bef_safe=bef_pos+r;
+            // }
+            // else{
+            //     if(2*(arr[i]-bef_pos)>now_pos_length+bef_pos_length){
+            //         safe;
+            //     }
+            // }
         }
         else if(arr[i]-r<safe){
             if(arr[i]+r>arr[i+1]-r){//뒤 범위와 겹치면
