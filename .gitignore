@@ -1,4 +1,7 @@
 .vscode/
-cpp/build/
+cpp/DIAMOND/build
+cpp/GOLD/build
+cpp/RUBY/build
+cpp/PLATINUM/build
 testcases/
 preview/
