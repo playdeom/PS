@@ -16,7 +16,7 @@ int main() {
 	}
 	for (int i = 1; i <= n + n; i++) {
         if(i<=n){
-        arr[n+i]=arr[i];
+			arr[n+i]=arr[i];
         }
 		arr[i] += arr[i - 1];
 	}
