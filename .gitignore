@@ -2,6 +2,7 @@
 cpp/DIAMOND/build/
 cpp/GOLD/build/
 cpp/RUBY/build/
+cpp/RUBY/metrix/
 cpp/PLATINUM/build/
 testcases/
 preview/
