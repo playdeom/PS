@@ -36,28 +36,37 @@ template<size_t _Nb> inline bitset<_Nb> operator-(const bitset<_Nb> &A, const bi
 	return C-=B;
 }
 //참고자료: https://m.blog.naver.com/jinhan814/222545486610
+int lcs(string a, string b, int sa, int sb, int lena, int lenb){
+    bitset<2001>d,x,s[26];
+    for(int i=sb; i<lenb+sb; i++){
+        s[b[i]-'a'][i]=1;
+    }
+    for(int i=sa; i<a.size(); i++){
+        x=s[a[i]-'a']|d;
+        d<<=1;
+        d[0]=1;
+        d=x&(x^(x-d));
+    }
+    return d.count();
+}
 int main() {
 	fastio;
     string a,b;
     cin>>a>>b;
     int lena=a.size(),lenb=b.size();
-    int sa=0;
-    a+=a;b+=b;
+    int sa=0,sb=0;
     int ans=0;
-    for(sa=0; sa<lena; sa++){
-        for(int sb=0; sb<lenb; sb++){
-            bitset<2001>d,x,s[26];
-            for(int i=0+sb; i<lenb+sb; i++){
-                s[b[i]-'a'][i]=1;
-            }
-            for(int i=0+sa; i<lena+sa; i++){
-                x=s[a[i]-'a']|d;
-                d<<=1;
-                d[0]=1;
-                d=x&(x^(x-d));
-            }
-            ans=max(ans,(int)d.count());
-        }
+    for(int i=0; i<lenb; i++){
+        ans=max(ans,lcs(a,b,sa,sb,lena,lenb));
+        b.push_back(b[i]);
+        sb++;
+    }
+    reverse(all(b));
+    sb=0;
+    for(int i=0; i<lena; i++){
+        ans=max(ans,lcs(a,b,sa,sb,lena,lenb));
+        a.push_back(a[i]);
+        sa++;
     }
     cout<<ans;
 }
