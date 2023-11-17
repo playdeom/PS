@@ -34,3 +34,62 @@ void printarr(vector<T> arr) {
     cout << endl;
 }
 /////////////////////////////////////////////////
+
+int main() {
+	fastio;
+	int t;
+	cin>>t;
+	while(t--){
+		int n,m;
+		string s;
+		cin>>n>>m>>s;
+		vector<int>a,b,arr,k,t;
+		a.resize(n+m+1);b.resize(n+m+1);
+		k.resize(n+m+1);t.resize(n+m+1);
+		for(int i=1; i<=n+m; i++){
+			if(s[i-1]=='0'){
+				a[i]=a[i-1]+1;
+				b[i]=b[i-1];
+			}
+			else{
+				a[i]=a[i-1];
+				b[i]=b[i-1]+1;
+			}
+			if(s[i-1]=='1')arr.push_back(i-1);
+			k[i]=t[i]=0;
+		}
+		int l=n,r=m;
+		for(int i=1; i<=n+m; i++){
+			if(l>r){
+				swap(l,r);
+				swap(k,t);
+				swap(n,m);
+			}
+			if(s[i-1]=='0'){
+				if(l)k[l]=0,l--;
+				else t[r]=0,r--;
+			}
+			else{
+				int save=b[i]+r-l+1;
+				int pos=arr[save-1]+1;
+				if(save<=b[n+m] and a[pos]-a[i]<l){
+					k[l]=1,l--;
+				}
+				else t[r]=1,r--;
+			}
+		}
+		int c=0;
+		vector<int>ans(n+m+1);
+		for(int i=0; i<=max(n,m); i++){
+			ans[i]=k[i]+t[i]+c;
+			c=ans[i]>>1;
+			ans[i]&=1;
+		}
+		if(c)ans[max(n,m)+1]=c;
+		int sk=max(n,m)+1;
+		while(sk>1 and !ans[sk])sk--;
+		for(int i=sk; i>0; i--)cout<<ans[i];
+		cout<<endl;
+	}
+	return 0;
+}

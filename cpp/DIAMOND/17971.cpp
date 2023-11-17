@@ -33,4 +33,38 @@ void printarr(vector<T> arr) {
 	}
     cout << endl;
 }
-/////////////////////////////////////////////////
+
+struct ladder{
+    int i,idx,x;
+    bool operator<(const ladder &d) const{
+        return x<d.x;
+    }
+};
+int main() {
+    fastio;
+    int n;
+    cin>>n;
+    vector<ladder>arr;
+    for(int i=1,a; i<n; i++){
+        int c=1;
+        while(cin>>a and a!=0)arr.push_back({i,c++,a});
+    }
+    sort(all(arr));
+    vector<int>save(n+1);
+    for(int i=0; i<=n; i++)save[i]=i;
+    //printarr(save);
+    for(auto[i,idx,n]:arr)swap(save[i],save[i+1]);
+    reverse(all(arr));
+    vector<pair<int,int>>ans;
+    for(auto[i,idx,x]:arr){
+        if(save[i]<=save[i+1])continue;
+        swap(save[i],save[i+1]);
+        ans.push_back({i,idx});
+    }
+    sort(all(ans));
+    cout<<ans.size()<<endl;
+    for(auto v:ans){
+        cout<<v.first<<' '<<v.second<<endl;
+    }
+    return 0;
+}
