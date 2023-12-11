@@ -1,10 +1,8 @@
 #define _CRT_SECURE_NO_WARNING
 #include <bits/stdc++.h>
-#include <ext/rope>
 #include <cassert>
 #include <x86intrin.h>
 using namespace std;
-using namespace __gnu_cxx;
 
 // utils
 #define fastio ios::sync_with_stdio(false);cin.tie(0);cout.tie(0)
@@ -35,4 +33,24 @@ void printarr(vector<T> arr) {
 	}
     cout << endl;
 }
-//////////////////////////////////////////
+/////////////////////////////////////////////
+int main(){
+	fastio;
+	int n;
+	cin>>n;
+	vector<int>a(n),b(n);
+	for(int i=0; i<n; i++)cin>>a[i]>>b[i];
+	for(int c=1;c;){
+		c=0;
+		for(int i=0; i<n; i++){
+			if(a[i]<2 or a[i]<=b[i])continue;
+			int save=max(1,(a[i]-b[i])/2);
+			a[i]-=save*2;
+			a[(i+1)%n]+=save;
+			c=1;
+		}
+	}
+	for(int i=0; i<n; i++)if(a[i]!=b[i])return cout<<"No",0;
+	cout<<"Yes";
+	return 0;
+}

@@ -36,3 +36,34 @@ void printarr(vector<T> arr) {
     cout << endl;
 }
 //////////////////////////////////////////
+
+int main(){
+	fastio;
+	string s;
+	cin>>s;
+	int m;
+	cin>>m;
+	rope<char>rp;
+	int n=s.size();
+	rp.append(s.c_str());
+	while(m--){
+		int q,x,y;
+		cin>>q>>x;
+		if(q==1){
+			cin>>y;
+			rope<char>save=rp.substr(x,y-x+1);
+			rp.erase(x,y-x+1);
+			rp.insert(0,save);
+		}
+		if(q==2){
+			cin>>y;
+			rope<char>save=rp.substr(x,y-x+1);
+			rp.erase(x,y-x+1);
+			rp.insert(n-y+x-1,save);
+		}
+		if(q==3){
+			cout<<rp[x]<<endl;
+		}
+	}
+	return 0;
+}

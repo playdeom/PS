@@ -1,10 +1,8 @@
 #define _CRT_SECURE_NO_WARNING
 #include <bits/stdc++.h>
-#include <ext/rope>
 #include <cassert>
 #include <x86intrin.h>
 using namespace std;
-using namespace __gnu_cxx;
 
 // utils
 #define fastio ios::sync_with_stdio(false);cin.tie(0);cout.tie(0)
@@ -36,3 +34,27 @@ void printarr(vector<T> arr) {
     cout << endl;
 }
 //////////////////////////////////////////
+bool cmp(pair<int,int>a, pair<int,int>b){
+	return a.second<b.second;
+}
+int main(){
+	fastio;
+	int n,m;
+	cin>>n>>m;
+	vector<pair<int,int>>arr(n);
+	for(auto&[s,e]:arr)cin>>s>>e;
+	sort(all(arr),cmp);
+	vector<int>size(m,-1);
+	int ans=0;
+	for(int i=0; i<n; i++){
+		sort(all(size),greater<int>());
+		for(auto&v:size){
+			if(v<arr[i].first){
+				v=arr[i].second;
+				ans++;
+				break;
+			}
+		}
+	}
+	cout<<ans;
+}

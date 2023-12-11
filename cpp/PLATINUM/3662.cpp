@@ -1,10 +1,8 @@
 #define _CRT_SECURE_NO_WARNING
 #include <bits/stdc++.h>
-#include <ext/rope>
 #include <cassert>
 #include <x86intrin.h>
 using namespace std;
-using namespace __gnu_cxx;
 
 // utils
 #define fastio ios::sync_with_stdio(false);cin.tie(0);cout.tie(0)
@@ -36,3 +34,43 @@ void printarr(vector<T> arr) {
     cout << endl;
 }
 //////////////////////////////////////////
+struct who{
+	int p,j;
+	bool operator<(const who&d) const {
+		if(p==d.p)return j<d.j;
+		return p>d.p;
+	}
+};
+struct pqwho{
+	bool operator()(const who&a, const who&b){
+		if(a.j==b.j)return a.p<b.p;
+		return a.j>b.j;
+	}
+};
+int main(){
+	fastio;
+	int t;
+	cin>>t;
+	while(t--){
+		int n;string s;
+		cin>>n>>s;
+		vector<who>arr(n);
+		for(auto&[p,j]:arr)cin>>p>>j;
+		int pans=0,jans=0;
+		sort(all(arr));
+		int c=0;
+		if(s.front()=='P')pans+=arr[0].p,c=1;
+		priority_queue<who,vector<who>,pqwho>pq;
+		for(int i=c; i<n; i+=2){
+			pq.push({arr[i].p,arr[i].j});
+			if(i+1<n){
+				pq.push({arr[i+1].p,arr[i+1].j});
+				pans+=pq.top().p;
+				pq.pop();
+			}
+		}
+		//pq.push({arr.back().p,arr.back().j});
+		while(!pq.empty())jans+=pq.top().j,pq.pop();
+		cout<<pans<<' '<<jans<<endl;
+	}
+}
