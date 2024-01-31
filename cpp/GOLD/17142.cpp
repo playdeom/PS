@@ -45,7 +45,7 @@ int bfs(vector<vector<int>>&arr,vector<int>&check,vector<pair<int,int>>&vir){
 			dist[vir[i].first][vir[i].second]=0;
 		}
 	}
-	int where=1,cnt=0;
+	int where=0,cnt=0;
 	while(!q.empty()){
 		int x=q.front().first;
 		int y=q.front().second;
