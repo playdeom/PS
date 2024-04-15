@@ -1,9 +1,7 @@
 .vscode/
-cpp/DIAMOND/build/
-cpp/GOLD/build/
-cpp/RUBY/build/
-cpp/RUBY/metrix/
-cpp/PLATINUM/build/
+cpp/build/
+cpp/RUBY/
+cpp/.cph/
 testcases/
 preview/
 deompsnote/
