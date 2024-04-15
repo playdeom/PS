@@ -8,7 +8,6 @@ using namespace __gnu_cxx;
 
 // utils
 #define fastio ios::sync_with_stdio(false);cin.tie(0);cout.tie(0)
-#define endl "\n"
 #define all(x) x.begin(), x.end()
 #define rall(x) x.rbegin(), x.rend()
 #define repair(x) x.erase(unique(all(x)),x.end())
@@ -37,20 +36,19 @@ template<class T>T bitctz(T x){return __builtin_ctz(x);}
 
 int main(){
 	fastio;
-	int c;
-    for(int a=1; a<=9; a++){
+    int a,b;
+    for(a=1; a<=10; a++){
         cout<<"? A "<<a<<endl;
-        cin>>c;
-        if(c){
-            for(int b=1; b<=9; b++){
-                cout<<"? B "<<b<<endl;
-                cin>>c;
-                if(c){
-                    cout<<"! "<<a+b;
-                    return 0;
-                }
-            }
-        }
+        fflush(stdout);
+        int c;cin>>c;
+        if(c==1)break;
     }
+    for(b=1; b<=10; b++){
+        cout<<"? B "<<b<<endl;
+        fflush(stdout);
+        int c;cin>>c;
+        if(c==1)break;
+    }
+    cout<<"! "<<a+b<<endl;
 	return 0;
 }
