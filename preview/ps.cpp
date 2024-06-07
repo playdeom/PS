@@ -37,6 +37,6 @@ template<class T>T bitctz(T x){return __builtin_ctz(x);}
 //////////////////////////////////////////
 int main() {
 	fastio;
-	
+	cout<<1<<endl;
 	return 0;
 }
