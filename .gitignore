@@ -1,2 +1,6 @@
 .vscode/
 preview/
+cpp/.cph/
+cpp/build/
+cpp/RUBY/metrix/
+
