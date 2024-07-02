@@ -67,6 +67,6 @@ int checker(int n){
 }
 int main() {
 	fastio;
-	
+
 	return 0;
 }

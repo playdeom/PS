@@ -90,7 +90,7 @@ namespace pollard_rho{
             return;
         }
         ll a,b,c,g=n;
-        while(g==1){
+        while(1){
             if(g==n){
                 a=b=rand()%(n-2)+2;
                 c=rand()%20+1;
@@ -98,6 +98,7 @@ namespace pollard_rho{
             a=f(c,n,a);
             b=f(c,n,f(c,n,b));
             g=gcd(abs(a-b),n);
+			if(g!=1)break;
         }
         rec(g,arr);
         rec(n/g,arr);
